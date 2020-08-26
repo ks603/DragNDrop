@@ -54,10 +54,6 @@ function updateSavedColumns() {
 
 // Create DOM Elements for each list item
 function createItemEl(columnEl, column, item, index) {
-  // console.log('columnEl:', columnEl)
-  // console.log('column:', column)
-  // console.log('item:', item)
-  // console.log('index:', index)
   // List Item
   const listEl = document.createElement('li')
   listEl.classList.add('drag-item')
@@ -99,6 +95,20 @@ function updateDOM() {
   updateSavedColumns()
 }
 
+// Show Add Item Input Box
+function showInputBox(column) {
+  addBtns[column].style.visibility = 'hidden'
+  saveItemBtns[column].style.display = 'flex'
+  addItemContainers[column].style.display = 'flex'
+}
+
+// Hide Item Input Box
+function hideInputBox(column) {
+  addBtns[column].style.visibility = 'visible'
+  saveItemBtns[column].style.display = 'none'
+  addItemContainers[column].style.display = 'none'
+}
+
 // Allows arrays to reflect Drag and Drop items
 function rebuildArrays() {
   backlogListArray = []
@@ -122,7 +132,6 @@ function rebuildArrays() {
 // When Item Starts Dragging
 function drag(e) {
   draggedItem = e.target
-  console.log('draggedItem', draggedItem)
 }
 
 // Colum Alows for Item to Drop
